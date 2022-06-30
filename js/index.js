@@ -1,3 +1,33 @@
+function solicitarEdad() {
+  let edad = parseInt(prompt("Ingresa tu edad"));
+  if (edad < 18) {
+    while (true) {
+      alert("Vuelve cuando seas mayor");
+    }
+  } else {
+    alert("Bienvenido a la plataforma");
+  }
+}
+
+solicitarEdad();
+
+function solicitarNombre() {
+  let nombreUsuario = prompt("Ingrese su Nombre");
+  if (nombreUsuario != "") {
+    alert("Hola " + nombreUsuario);
+  } else {
+    alert("No ingresaste un Nombre");
+  }
+  let direccion = prompt("Ingrese direccion de envio");
+  if (direccion != "") {
+    alert("la direccion ingresada es " + direccion);
+  } else {
+    alert("No ingresaste ninguna direccion");
+  }
+}
+
+solicitarNombre();
+
 const Clickbutton = document.querySelectorAll(".button");
 const tbody = document.querySelector(".tbody");
 let carrito = [];
@@ -10,6 +40,7 @@ function addToCarritoItem(e) {
   const button = e.target;
   const item = button.closest(".card");
   const itemTitle = item.querySelector(".card-title").textContent;
+
   const itemPrice = item.querySelector(".precio").textContent;
   const itemImg = item.querySelector(".card-img-top").src;
 
@@ -56,16 +87,16 @@ function renderCarrito() {
     
     <th scope="row">1</th>
             <td class="table__productos">
-              <img src=${item.img}  alt="">
-              <h6 class="title">${item.title}</h6>
+              <img src= ${item.img}  alt="">
+              <h6 class="title"> ${item.title}</h6>
             </td>
-            <td class="table__price"><p>${item.precio}</p></td>
+            <td class="table__price"><p> ${item.precio}</p></td>
             <td class="table__cantidad">
-              <input type="number" min="1" value=${item.cantidad} class="input__elemento">
+              <input type="number" min="1" value= ${item.cantidad} class="input__elemento">
               <button class="delete btn btn-danger">x</button>
             </td>
-    
-    `;
+            
+            `;
     tr.innerHTML = Content;
     tbody.append(tr);
 
