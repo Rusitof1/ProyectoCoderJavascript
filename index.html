@@ -9,283 +9,332 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!--bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    
+    <link rel="stylesheet" href="css/styles.css" />
+
     <title>Crazy Monkey</title>
   </head>
   <body>
-    <header>
-    <nav class="navbar navbar-expand-lg navbar-light background-color py-3" style="background-color: #23dfd5;">
-      <div class="container">
-        <a class="navbar-brand" href="index.html"> <img src="imagenes/monkey.jpg" width="200" height="180"  alt=""></a>
-        <button
-          class="navbar-toggler"
+    <header class="container-fluid bg-dark position-sticky top-0">
+      <ul
+      class="nav nav-pills mb-3 py-3 container"
+      id="pills-tab"
+      role="tablist"
+    >
+      <li class="nav-item text-primary" role="presentation">
+        <a
+          class="nav-link "
+          id="pills-home-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-home"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          role="tab"
+          aria-controls="pills-home"
+          aria-selected="true"
+          >Home</a
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=""> Bebidas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=""> Contacto</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link active"
+          id="pills-profile-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-profile"
+          type="button"
+          role="tab"
+          aria-controls="pills-profile"
+          aria-selected="false"
+          >Productos</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="pills-contact-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-contact"
+          type="button"
+          role="tab"
+          aria-controls="pills-contact"
+          aria-selected="false"
+          >Carrito</a
+        >
+      </li>
+    </ul>
   </header>
+
+  <div class="alert container position-sticky top-0 alert-primary hide" role="alert">
+  Producto Añadido al carrito!
+  </div>
+  <div class="alert container position-sticky top-0 alert-danger remove" role="alert">
+    Producto removido!
+  </div>
+
+  <div class="tab-content" id="pills-tabContent">
+    <div
+      class="tab-pane fade "
+      id="pills-home"
+      role="tabpanel"
+      aria-labelledby="pills-home-tab"
+    >
     <section class="bg-light p-5 text-center text-sm-start">
-        <div class="container">
-          <div class="d-sm-flex align-items-center justify-content-between">
-            <div>
-              <h1>Compra <span class="text-primary">sin problemas</span></h1>
-              <p class="lead my-4">
-                Con Mercado Pago, tenes opciones de envio de dinero, Codigo QR y
-                transferencia bancaria
-              </p>
-            </div>
-            <img
-              src="imagenes/point.jpg"
-              alt=""
-              class="img-fluid w-50 d-none d-sm-block"
-            />
-          </div>
-        </div>
-      </section>
-      <section>
-        <div class="tab-pane fade panelBebidas container show active" id="pills-bebidas" role="tabpanel" aria-labelledby="pills-bebidas-tab">
-          <h1 class="titulos">PEDI TU BEBIDA FAVORITA</h1>
-            <div id="divBebidas" class="bebidas row container-fluid animate__animated animate__slideInUp">
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="1" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">1</h5>
-                            <h5 class="card-title"><b>FERNET</b></h5>
-                            <img class="itemImg" src="imagenes/fernet.png">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">39°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 1500</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                                <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(1)" >Comprar
-                        </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="2" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">2</h5>
-                            <h5 class="card-title"><b>ABSOLUT</b></h5>
-                            <img class="itemImg" src="imagenes/absolut.png">
-                            <br><br>
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">46.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 3500</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                          <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(2);">Comprar
-                  </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="3" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">3</h5>
-                            <h5 class="card-title"><b>APEROL</b></h5>
-                            <img class="itemImg" src="imagenes/aperol.png">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">36.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 2700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                          <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(3);">Comprar
-                  </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="4" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">4</h5>
-                            <h5 class="card-title"><b>BAYLES</b></h5>
-                            <img class="itemImg" src="imagenes/bayles.png">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">26.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 1700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                          <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(4);">Comprar
-                  </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="5" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">5</h5>
-                            <h5 class="card-title"><b>BOMBAY</b></h5>
-                            <img class="itemImg" src="imagenes/bombay.png">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">56.5°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 4000</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                          <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(5);">Comprar
-                  </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="6" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">6</h5>
-                            <h5 class="card-title"><b>JONNIE</b></h5>
-                            <img class="itemImg" src="imagenes/jonnie.png">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">62.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro </b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 5700</b></p>
-                        </div>>
-                        <div class="card-body d-grid gap-2">
-                          <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(6);">Comprar
-                  </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="7" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">7</h5>
-                            <h5 class="card-title"><b>MALIBU</b></h5>
-                            <img class="itemImg" src="imagenes/malibu.png">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">26.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 1700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                                <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(7);">Comprar
-                        </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="8" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">8</h5>
-                            <h5 class="card-title"><b>SMIRNOFF</b></h5>
-                            <img class="itemImg" src="imagenes/smirnof.png">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">6.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">1 litro</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 1700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                                <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(8);">Comprar
-                        </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="9" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">9</h5>
-                            <h5 class="card-title"><b>Fernet</b></h5>
-                            <img class="itemImg" src="imagenes/">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">6.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">2 litros</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                                <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(9);">Comprar
-                                </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="10" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">10</h5>
-                            <h5 class="card-title"><b>Fernet</b></h5>
-                            <img class="itemImg" src="imagenes/">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">6.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">2 litros</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                                <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(10);">Comprar
-                                </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="11" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">11</h5>
-                            <h5 class="card-title"><b>Fernet</b></h5>
-                            <img class="itemImg" src="imagenes/">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">6.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">2 litros</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                                <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(11);">Comprar
-                                </button></div>
-                    </div>
-                </div>
-                
-                <div class="row col-12 sm-6 col-sm-3 ">          
-                    <div class="card losEstilos col">               
-                        <div id="12" class="card-body mb-1 ">
-                            <h5 class="card-id itemId" style="display:none">12</h5>
-                            <h5 class="card-title"><b>Fernet</b></h5>
-                            <img class="itemImg" src="imagenes/">
-                            <p class="card-title"> Alcohol <b class="itemAlcohol">6.3°</b></p>
-                            <p class="card-title"> Presentacion:  <b class="itemTamaño">2 litros</b></p>
-                            <p class="card-title"> Precio:  <b class="itemPrecio">$ 700</b></p>
-                        </div>
-                        <div class="card-body d-grid gap-2">
-                                <button id="agregarPedido" class="btn btn-success" onclick="seleccionarProducto(12);">Comprar
-                                </button></div>
-                    </div>
-                </div>
-                
-                
-        </div>
-        </section>
-        <section>
-        <div class="container py-2">
-          <p class="lead"> Ingrese Bebidas</p>
-        <form action="">
-          <input id="nombre" type="text" placeholder="ingrese bebida" class="form-control my-2">
-          <input id="precio" type="text" placeholder="ingrese precio" class="form-control my-2">
-          <button id="boton" class="btn btn-success" type="reset" onclick="capturar();">Agregar</button>
-        </form>
-      </div>
       <div class="container">
-        <table class="table" id="tabla">
-          <thead class="thead-inverse">
-            <tr>
-              <th>Bebida</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          
-        </table>
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div>
+            <h1>Compra <span class="text-primary">sin problemas</span></h1>
+            <p class="lead my-4">
+              Con Mercado Pago, tenes opciones de envio de dinero, Codigo QR y
+              transferencia bancaria
+            </p>
+          </div>
+          <img
+            src="imagenes/point.jpg"
+            alt=""
+            class="img-fluid w-50 d-none d-sm-block"
+          />
+        </div>
       </div>
     </section>
+    </div>
+    <div
+      class="tab-pane fade show active container"
+      id="pills-profile"
+      role="tabpanel"
+      aria-labelledby="pills-profile-tab"
+    >
 
+        <h2 class="h4 m-4 text-primary">PEDI TU BEBIDA FAVORITA</h2>       
+           <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">FERNET</h5>
+                  <img src="./imagenes/fernet.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">39°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 1500</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+      
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">ABSOLUT</h5>
+                  <img src="./imagenes/absolut.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">50°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 3500</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">APEROL</h5>
+                  <img src="./imagenes/aperol.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">11°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 1200</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">BAYLES</h5>
+                  <img src="./imagenes/bayles.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">17°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 2500</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">BOMBAY</h5>
+                  <img src="./imagenes/bombay.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">47°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">750 Mlitros</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 3400</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">JONNIE</h5>
+                  <img src="./imagenes/jonnie.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">43°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">750 Mlitros</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 5700</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">MALIBU</h5>
+                  <img src="./imagenes/malibu.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">20°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">750 Mlitro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 1895</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">SMIRNOFF</h5>
+                  <img src="./imagenes/smirnof.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">37°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">750 Mlitro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 915</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">ABSOLUT</h5>
+                  <img src="./imagenes/absolut.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">50°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 3500</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+                <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">ABSOLUT</h5>
+                  <img src="./imagenes/absolut.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">50°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 3500</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">ABSOLUT</h5>
+                  <img src="./imagenes/absolut.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">50°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 3500</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col d-flex justify-content-center mb-4">
+                <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
+                  <h5 class="card-title pt-2 text-center text-primary">card title 8</h5>
+                  <img src="./imagenes/absolut.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-primary"> Alcohol <b class="Alcohol">50°</b></p>
+                    <p class="text-primary"> Presentacion:  <b class="Tamaño">1 litro</b></p>
+                    <h5 class="text-primary">Precio: <span class="precio">$ 3500</span></h5>
+                    <div class="d-grid gap-2">
+                    <button  class="btn btn-success">Añadir a Carrito</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+    
+    
+            </div>
+    
+          </div>
+          <div
+            class="tab-pane fade carrito"
+            id="pills-contact"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab"
+          >
+          <br>
+          <table class="table table-dark table-hover">
+            <thead>
+              <tr class="text-primary">
+                <th scope="col">#</th>
+                <th scope="col">Productos</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody class="tbody">
+              
+              
+            </tbody>
+          </table>
+          <br><br>
+          <div class="row mx-4">
+            <div class="col">
+              <h3 class="itemCartTotal text-white">Total: 0</h3>
+            </div>
+            <div class="col d-flex justify-content-end">
+              <button class="btn btn-success">COMPRAR</button>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+    
     <footer>
       <div class="row">
         <div class="col-lg-4 ml-auto text-center">
@@ -316,16 +365,18 @@
               </ul>
             </div>
           </footer>
-  </section>
   
       
-      <script src="index.js"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
       <!-- Option 1: Bootstrap Bundle with Popper -->
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"
       ></script>
+      
+      <script src="index.js"></script>
     </body>
   </html>
   

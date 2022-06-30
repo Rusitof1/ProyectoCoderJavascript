@@ -1,167 +1,137 @@
-let divBebidas = document.getElementById("divBebidas");
+const Clickbutton = document.querySelectorAll(".button");
+const tbody = document.querySelector(".tbody");
+let carrito = [];
 
-function solicitarEdad() {
-  let edad = parseInt(prompt("Ingresa tu edad"));
-  if (edad < 18) {
-    while (true) {
-      alert("Vuelve cuando seas mayor");
+Clickbutton.forEach((btn) => {
+  btn.addEventListener("click", addToCarritoItem);
+});
+
+function addToCarritoItem(e) {
+  const button = e.target;
+  const item = button.closest(".card");
+  const itemTitle = item.querySelector(".card-title").textContent;
+  const itemPrice = item.querySelector(".precio").textContent;
+  const itemImg = item.querySelector(".card-img-top").src;
+
+  const newItem = {
+    title: itemTitle,
+    precio: itemPrice,
+    img: itemImg,
+    cantidad: 1,
+  };
+
+  addItemCarrito(newItem);
+}
+
+function addItemCarrito(newItem) {
+  const alert = document.querySelector(".alert");
+
+  setTimeout(function () {
+    alert.classList.add("hide");
+  }, 2000);
+  alert.classList.remove("hide");
+
+  const InputElemnto = tbody.getElementsByClassName("input__elemento");
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].title.trim() === newItem.title.trim()) {
+      carrito[i].cantidad++;
+      const inputValue = InputElemnto[i];
+      inputValue.value++;
+      CarritoTotal();
+      return null;
     }
-  } else {
-    alert("Bienvenido a la plataforma");
   }
+
+  carrito.push(newItem);
+
+  renderCarrito();
 }
 
-solicitarEdad();
+function renderCarrito() {
+  tbody.innerHTML = "";
+  carrito.map((item) => {
+    const tr = document.createElement("tr");
+    tr.classList.add("ItemCarrito");
+    const Content = `
+    
+    <th scope="row">1</th>
+            <td class="table__productos">
+              <img src=${item.img}  alt="">
+              <h6 class="title">${item.title}</h6>
+            </td>
+            <td class="table__price"><p>${item.precio}</p></td>
+            <td class="table__cantidad">
+              <input type="number" min="1" value=${item.cantidad} class="input__elemento">
+              <button class="delete btn btn-danger">x</button>
+            </td>
+    
+    `;
+    tr.innerHTML = Content;
+    tbody.append(tr);
 
-function solicitarNombre() {
-  let nombreUsuario = prompt("Ingrese su Nombre");
-  if (nombreUsuario != "") {
-    alert("Hola " + nombreUsuario);
-  } else {
-    alert("No ingresaste un Nombre");
+    tr.querySelector(".delete").addEventListener("click", removeItemCarrito);
+    tr.querySelector(".input__elemento").addEventListener(
+      "change",
+      sumaCantidad
+    );
+  });
+  CarritoTotal();
+}
+
+function CarritoTotal() {
+  let Total = 0;
+  const itemCartTotal = document.querySelector(".itemCartTotal");
+  carrito.forEach((item) => {
+    const precio = Number(item.precio.replace("$", ""));
+    Total = Total + precio * item.cantidad;
+  });
+
+  itemCartTotal.innerHTML = `Total $${Total}`;
+  addLocalStorage();
+}
+
+function removeItemCarrito(e) {
+  const buttonDelete = e.target;
+  const tr = buttonDelete.closest(".ItemCarrito");
+  const title = tr.querySelector(".title").textContent;
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].title.trim() === title.trim()) {
+      carrito.splice(i, 1);
+    }
   }
-  let direccion = prompt("Ingrese direccion de envio");
-  if (direccion != "") {
-    alert("la direccion ingresada es " + direccion);
-  } else {
-    alert("No ingresaste ninguna direccion");
-  }
+
+  const alert = document.querySelector(".remove");
+
+  setTimeout(function () {
+    alert.classList.add("remove");
+  }, 2000);
+  alert.classList.remove("remove");
+
+  tr.remove();
+  CarritoTotal();
 }
 
-solicitarNombre();
-
-//function agregarProducto() {
-//var productos = [
-//"Fernet",
-//"Absolut",
-//"Jonnie",
-//"Bombay",
-//"Coca",
-//"Tia Maria",
-//"Capitan Morgan",
-//"Smirnoff",
-//"Sprite",
-//];
-//for (let i = 0; i < productos.length; i++) {
-//console.log(productos[i]);
-//}
-//}
-//agregarProducto();
-
-/* function solicitarProducto() {
-  let producto = prompt(
-    "selecciona un producto \n Fernet \n Absolut \n Jonnie \n Bombay \n Coca \n Tia Maria \n Caputan Morgan \n Smirnoff \n Sprite "
-  );
-  switch (producto) {
-    case "Fernet":
-      alert("1500 Pesos");
-      break;
-    case "Absolut":
-      alert("1500 Pesos");
-      break;
-    case "Jonnie":
-      alert("2000 Pesos");
-      break;
-    case "Bombay":
-      alert("1300 Pesos");
-      break;
-    case "Coca":
-      alert("350 Pesos");
-      break;
-    case "Tia Maria":
-      alert("500 Pesos");
-      break;
-    case "Capitan Morgan":
-      alert("800 Pesos");
-      break;
-    case "Smirnoff":
-      alert("1000 Pesos");
-      break;
-    case "Sprite":
-      alert("300 Pesos");
-      break;
-    default:
-      alert("Sin stock");
-      break;
-  }
-}
-
-solicitarProducto(); */
-
-////
-//
-
-//let contrasena = prompt("Ingrese Contraseña");
-
-//if (correo === "juan@mail.com" && contrasena === "123456") {
-//alert("Bienvenido a la plataforma");
-//} else {
-//alert("Correo o contraseña no coinciden");
-//}//
-function capturar() {
-  //console.log("capturado");
-  function Bebida(nombre, precio) {
-    this.nombre = nombre;
-    this.precio = precio;
-  }
-  var nombreCapturar = document.getElementById("nombre").value;
-  //console.log(nombreCapturar);
-  var precioCapturar = document.getElementById("precio").value;
-  //console.log(nombreCapturar);
-
-  nuevoProducto = new Bebida(nombreCapturar, precioCapturar);
-  console.log(nuevoProducto);
-  agregar();
-}
-
-var baseDatos = [];
-function agregar() {
-  baseDatos.push(nuevoProducto);
-  console.log(baseDatos);
-  document.getElementById("tabla").innerHTML +=
-    "<tbody><td>" +
-    nuevoProducto.nombre +
-    "</td><td>" +
-    nuevoProducto.precio +
-    "</td></tbody>";
-}
-
-//Class
-class Bebida {
-  constructor(nombre, clase) {
-    this.nombre = nombre;
-    this.clase = clase;
-  }
-}
-
-function buscadorBebidas() {
-  const tiamaria = new Bebida("Tia maria", "Con Alcohol");
-  const sprite = new Bebida("Sprite", "Sin Alcohol");
-  const coca = new Bebida("Coca", "Sin Alcohol");
-  return [tiamaria, sprite, coca];
-}
-
-buscadorBebidas();
-
-function buscarConAlcohol() {
-  //array buscador bebidas
-  let Bebidas = buscadorBebidas();
-
-  //Buscar con alcohol
-  const conAlcohol = Bebidas.find((m) => m.clase === "Con Alcohol");
-  alert("Las Bebidas con Alcohol son: " + conAlcohol.nombre);
-}
-
-buscarConAlcohol();
-
-function buscarSinAlcohol() {
-  let Bebidas = buscadorBebidas();
-  const sinAlcohol = Bebidas.filter((m) => m.clase === "Sin Alcohol");
-
-  alert("Las Bebidas sin Alcohol son:");
-  sinAlcohol.forEach(function (item) {
-    alert(item.nombre);
+function sumaCantidad(e) {
+  const sumaInput = e.target;
+  const tr = sumaInput.closest(".ItemCarrito");
+  const title = tr.querySelector(".title").textContent;
+  carrito.forEach((item) => {
+    if (item.title.trim() === title) {
+      sumaInput.value < 1 ? (sumaInput.value = 1) : sumaInput.value;
+      item.cantidad = sumaInput.value;
+      CarritoTotal();
+    }
   });
 }
 
-buscarSinAlcohol();
+function addLocalStorage() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+window.onload = function () {
+  const storage = JSON.parse(localStorage.getItem("carrito"));
+  if (storage) {
+    carrito = storage;
+    renderCarrito();
+  }
+};
