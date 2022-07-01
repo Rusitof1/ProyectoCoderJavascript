@@ -152,7 +152,6 @@ function sumaCantidad(e) {
       CarritoTotal();
     }
   });
-  console.log(carrito);
 }
 
 function addLocalStorage() {
