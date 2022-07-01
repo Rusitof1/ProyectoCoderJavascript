@@ -40,7 +40,6 @@ function addToCarritoItem(e) {
   const button = e.target;
   const item = button.closest(".card");
   const itemTitle = item.querySelector(".card-title").textContent;
-
   const itemPrice = item.querySelector(".precio").textContent;
   const itemImg = item.querySelector(".card-img-top").src;
 
@@ -153,6 +152,7 @@ function sumaCantidad(e) {
       CarritoTotal();
     }
   });
+  console.log(carrito);
 }
 
 function addLocalStorage() {
