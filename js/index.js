@@ -61,11 +61,11 @@ function addItemCarrito(newItem) {
   }, 2000);
   alert.classList.remove("hide");
 
-  const InputElemnto = tbody.getElementsByClassName("input__elemento");
+  const InputElemento = tbody.getElementsByClassName("input__elemento");
   for (let i = 0; i < carrito.length; i++) {
     if (carrito[i].title.trim() === newItem.title.trim()) {
       carrito[i].cantidad++;
-      const inputValue = InputElemnto[i];
+      const inputValue = InputElemento[i];
       inputValue.value++;
       CarritoTotal();
       return null;
