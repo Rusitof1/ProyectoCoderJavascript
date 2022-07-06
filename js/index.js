@@ -61,11 +61,11 @@ function addItemCarrito(newItem) {
   }, 2000);
   alert.classList.remove("hide");
 
-  const InputElemento = tbody.getElementsByClassName("input__elemento");
+  const InputElemnto = tbody.getElementsByClassName("input__elemento");
   for (let i = 0; i < carrito.length; i++) {
     if (carrito[i].title.trim() === newItem.title.trim()) {
       carrito[i].cantidad++;
-      const inputValue = InputElemento[i];
+      const inputValue = InputElemnto[i];
       inputValue.value++;
       CarritoTotal();
       return null;
@@ -152,6 +152,7 @@ function sumaCantidad(e) {
       CarritoTotal();
     }
   });
+  console.log(carrito);
 }
 
 function addLocalStorage() {
