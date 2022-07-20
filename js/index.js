@@ -18,7 +18,7 @@ function solicitarNombre() {
   } else {
     alert("No ingresaste un Nombre");
   }
-  let direccion = prompt("Ingrese direccion de envio");
+  let direccion = prompt("Ingrese la direccion de envio");
   if (direccion != "") {
     alert("la direccion ingresada es " + direccion);
   } else {
