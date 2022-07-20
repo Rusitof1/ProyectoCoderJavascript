@@ -70,16 +70,19 @@ function addItemCarrito(newItem) {
       CarritoTotal();
       return null;
     }
-  }
-  Toastify({
-    text: "Producto agregado",
-    duration: 3000,
-    position: "right",
-    style: {
-      background: "linear-gradient(to left, #BCA5FF, #FF0000)",
-    },
-  }).showToast();
 
+    Toastify({
+      text: "Producto agregado",
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      positionLeft: true, // `true` or `false`
+      style: {
+        background: "linear-gradient(to left, #BCA5FF, #FF0000)",
+      },
+    }).showToast();
+  }
   carrito.push(newItem);
 
   renderCarrito();
@@ -137,15 +140,19 @@ function removeItemCarrito(e) {
     if (carrito[i].title.trim() === title.trim()) {
       carrito.splice(i, 1);
     }
-  }
-  Toastify({
-    text: "Producto eliminado",
-    duration: 3000,
-    style: {
-      background: "linear-gradient(to left, #BCA5FF, #FF0000)",
-    },
-  }).showToast();
 
+    Toastify({
+      text: "Producto eliminado",
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      positionLeft: true, // `true` or `false`
+      style: {
+        background: "linear-gradient(to left, #BCA5FF, #FF0000)",
+      },
+    }).showToast();
+  }
   //const alert = document.querySelector(".remove");
 
   //setTimeout(function () {
