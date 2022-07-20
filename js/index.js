@@ -54,12 +54,12 @@ function addToCarritoItem(e) {
 }
 
 function addItemCarrito(newItem) {
-  const alert = document.querySelector(".alert");
+  //const alert = document.querySelector(".alert");
 
-  setTimeout(function () {
-    alert.classList.add("hide");
-  }, 2000);
-  alert.classList.remove("hide");
+  //setTimeout(function () {
+  //alert.classList.add("hide");
+  //}, 2000);
+  //alert.classList.remove("hide");
 
   const InputElemnto = tbody.getElementsByClassName("input__elemento");
   for (let i = 0; i < carrito.length; i++) {
@@ -71,6 +71,14 @@ function addItemCarrito(newItem) {
       return null;
     }
   }
+  Toastify({
+    text: "Producto agregado",
+    duration: 3000,
+    position: "right",
+    style: {
+      background: "linear-gradient(to left, #BCA5FF, #FF0000)",
+    },
+  }).showToast();
 
   carrito.push(newItem);
 
@@ -96,6 +104,7 @@ function renderCarrito() {
             </td>
     
     `;
+
     tr.innerHTML = Content;
     tbody.append(tr);
 
@@ -129,13 +138,20 @@ function removeItemCarrito(e) {
       carrito.splice(i, 1);
     }
   }
+  Toastify({
+    text: "Producto eliminado",
+    duration: 3000,
+    style: {
+      background: "linear-gradient(to left, #BCA5FF, #FF0000)",
+    },
+  }).showToast();
 
-  const alert = document.querySelector(".remove");
+  //const alert = document.querySelector(".remove");
 
-  setTimeout(function () {
-    alert.classList.add("remove");
-  }, 2000);
-  alert.classList.remove("remove");
+  //setTimeout(function () {
+  //alert.classList.add("remove");
+  //}, 2000);
+  //alert.classList.remove("remove");
 
   tr.remove();
   CarritoTotal();
